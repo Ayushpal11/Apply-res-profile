@@ -1,0 +1,66 @@
+# Senior Python Software Engineer/Open-Source Contributor - US Remote
+
+> Hugging Face · United States (Remote) · Full-time · Posted 2026-06-02
+
+**Workplace:** remote
+
+**Department:** Product
+
+## Description
+
+At Hugging Face, we're on a journey to democratize good AI. We are building the fastest growing platform for AI builders with over 11 million users who collectively shared over 4 million models, 1 million datasets & 1.5 million Gradio apps. Our open-source libraries have more than 700,000 stars on Github.  
+  
+**About the Role**
+
+Roles at Hugging Face are very fluid and dynamic -- we are looking for someone who is comfortable taking on different challenges that will evolve over time. In the short term, the focus of this role is to help develop Gradio ([www.gradio.dev](http://www.gradio.dev/)), a Python framework that lets users build machine learning web apps, and Trackio, a local-first, agent-friendly experiment tracking platform ([https://github.com/gradio-app/trackio](https://github.com/gradio-app/trackio)). Gradio and Trackio are used by more than 1 million developers each month, locally and to launch apps on [Hugging Face Spaces](https://huggingface.co/spaces). These apps have allowed machine learning to be accessible to a wide audience -- for the first time in history, anyone with an internet connection can use cutting-edge machine learning models right from their browser.
+
+  
+Key responsibilities include:
+
+-   Designing, developing, and maintaining core features for Gradio and Trackio, ensuring scalability, reliability, and ease of use for ML developers.
+-   Architecting complex Python projects and frameworks that serve as foundational tools for the ML community.
+-   Collaborating with open-source contributors and engaging with the broader community through code reviews, discussions, and support.
+-   Integrating modern frontend technologies to create seamless and intuitive user experiences for Python-based web applications.
+-   Adapting to evolving engineering challenges and contributing to the direction of our developer tools as the landscape changes.
+
+## Requirements
+
+### About You
+
+If you love open-source, are passionate about making machine learning more accessible, have experience building Python frameworks, and want to contribute to one of the fastest-growing machine learning libraries, then we can't wait to see your application!
+
+### What you'll need
+
+-   Bachelor’s degree or equivalent in Computer Science or a related field
+-   5+ years of professional Python development experience
+-   Experience architecting complex Python projects or frameworks
+-   Professional experience with JavaScript or TypeScript
+-   Professional experience with a modern frontend framework such as React or Svelte
+-   Experience contributing to or maintaining open-source software projects
+
+If you're interested in joining us, but don't tick every box above, we still encourage you to apply! We're building a diverse team whose skills, experiences, and backgrounds complement one another. We're happy to consider where you might be able to make the biggest impact.
+
+### One more thing
+
+At Hugging Face we believe great AI shouldn't require a massive cluster, we build for everyone, especially the GPU-poor. And because we read every application, here's a small sign that you read this one too: start your answer to the first application question with the words “**GPU-poor and proud** 🤗”. No trick, no catch, it just tells us a real person is on the other side.
+
+### More about Hugging Face
+
+**We are actively working to build a culture that values diversity, equity, and inclusivity**. We are intentionally building a workplace where people feel respected and supported—regardless of who you are or where you come from. We believe this is foundational to building a great company and community. Hugging Face is an equal opportunity employer and we do not discriminate on the basis of race, religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or disability status.
+
+**We value development.** You will work with some of the smartest people in our industry. We are an organization that has a bias for impact and is always challenging ourselves to continuously grow. We provide all employees with reimbursement for relevant conferences, training, and education.
+
+**We care about your well-being.** We offer flexible working hours and remote options. We offer health, dental, and vision benefits for employees and their dependents. We also offer parental leave and flexible paid time off.
+
+**We support our employees wherever they are**. While we have office spaces in NYC and Paris, we're very distributed and all remote employees have the opportunity to visit our offices. If needed, we'll also outfit your workstation to ensure you succeed.
+
+**We want our teammates to be shareholders**. All employees have company equity as part of their compensation package. If we succeed in becoming a category-defining platform in machine learning and artificial intelligence, everyone enjoys the upside.
+
+**We support the community**. We believe major scientific advancements are the result of collaboration across the field. Join a community supporting the ML/AI community.
+
+## Apply
+
+[Apply at Hugging Face](https://apply.workable.com/huggingface/j/F8427A442D/apply)
+
+---
+Powered by [Workable](https://www.workable.com)

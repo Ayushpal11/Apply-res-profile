@@ -38,7 +38,10 @@ import { execFileSync } from 'child_process';
 // ---------------------------------------------------------------------------
 try {
   const { config } = await import('dotenv');
-  config();
+  const envConfig = config();
+  if (envConfig.parsed && envConfig.parsed.GEMINI_API_KEY) {
+    process.env.GEMINI_API_KEY = envConfig.parsed.GEMINI_API_KEY;
+  }
 } catch {
   // dotenv is optional — fall back to process.env if not installed
 }
@@ -295,33 +298,74 @@ LEGITIMACY: <High Confidence | Proceed with Caution | Suspicious>
 `;
 
 // ---------------------------------------------------------------------------
-// Call Gemini API
+// Call Gemini API (with robust retry & model fallback)
 // ---------------------------------------------------------------------------
-console.log(`🤖  Calling Gemini (${modelName})... this may take 30-60 seconds.\n`);
-
 const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({
-  model: modelName,
-  generationConfig: {
-    temperature: 0.4,      // deterministic enough for structured evaluation
-    maxOutputTokens: 8192, // full 7-block evaluation
-  },
-});
+const candidateModels = Array.from(new Set([
+  modelName,
+  'gemini-3.1-flash-lite',
+  'gemini-3-flash-preview',
+  'gemini-3.5-flash',
+  'gemini-flash-latest',
+  'gemini-2.5-flash'
+]));
 
 let evaluationText;
-try {
-  const result = await model.generateContent([
-    { text: systemPrompt },
-    { text: `\n\nJOB DESCRIPTION TO EVALUATE:\n\n${jdText}` },
-  ]);
-  evaluationText = result.response.text();
-} catch (err) {
-  const sanitizedMsg = (err.message || '').split(apiKey).join('[REDACTED]');
-  console.error('❌  Gemini API error:', sanitizedMsg);
+let lastError;
+let successfulModel = '';
+
+for (const currentModelName of candidateModels) {
+  console.log(`🤖  Trying Gemini model: ${currentModelName}...`);
+  const model = genAI.getGenerativeModel({
+    model: currentModelName,
+    generationConfig: {
+      temperature: 0.4,      // deterministic enough for structured evaluation
+      maxOutputTokens: 8192, // full 7-block evaluation
+    },
+  });
+
+  let attempt = 1;
+  const maxAttempts = 3;
+  let success = false;
+
+  while (attempt <= maxAttempts) {
+    try {
+      const result = await model.generateContent([
+        { text: systemPrompt },
+        { text: `\n\nJOB DESCRIPTION TO EVALUATE:\n\n${jdText}` },
+      ]);
+      evaluationText = result.response.text();
+      successfulModel = currentModelName;
+      success = true;
+      break;
+    } catch (err) {
+      lastError = err;
+      const sanitizedMsg = (err.message || '').split(apiKey).join('[REDACTED]');
+      console.warn(`⚠️  [${currentModelName}] Attempt ${attempt} failed: ${sanitizedMsg}`);
+      
+      if (sanitizedMsg.includes('503') || sanitizedMsg.includes('Service Unavailable') || sanitizedMsg.includes('high demand')) {
+        console.log('Sleeping 3 seconds before retry...');
+        await new Promise(r => setTimeout(r, 3000));
+        attempt++;
+      } else {
+        // For 429 quota or other errors, break and try next model
+        break;
+      }
+    }
+  }
+
+  if (success) {
+    modelName = successfulModel; // update modelName for saving/report metadata
+    console.log(`🎉  Evaluation succeeded using ${modelName}!`);
+    break;
+  }
+}
+
+if (!evaluationText) {
+  const sanitizedMsg = (lastError?.message || '').split(apiKey).join('[REDACTED]');
+  console.error('❌  All Gemini models failed. Last error:', sanitizedMsg);
   if (sanitizedMsg.includes('API_KEY')) {
     console.error('    Check your GEMINI_API_KEY in .env');
-  } else if (sanitizedMsg.includes('quota') || sanitizedMsg.includes('rate')) {
-    console.error('    You may have hit the free-tier rate limit. Wait 60s and retry.');
   }
   process.exit(1);
 }
@@ -330,6 +374,13 @@ try {
   validateEvaluationShape(evaluationText);
 } catch (err) {
   console.error('❌  Gemini output failed validation:', err.message);
+  try {
+    const failedPath = join(ROOT, 'scratch', 'failed-output.txt');
+    writeFileSync(failedPath, evaluationText, 'utf-8');
+    console.error(`📂  Failed output saved for debugging at: ${failedPath}`);
+  } catch (writeErr) {
+    // Ignore
+  }
   console.error('    No report was saved. Retry, lower temperature, or use the Claude pipeline for this JD.');
   process.exit(1);
 }

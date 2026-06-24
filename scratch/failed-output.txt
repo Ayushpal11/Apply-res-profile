@@ -1,0 +1,88 @@
+## Block A — Role Summary
+
+| Dimension | Details |
+| :--- | :--- |
+| **Archetype** | AI Platform / LLMOps |
+| **Domain** | Workflow Orchestration / Enterprise SaaS |
+| **Function** | Fullstack Product Engineering |
+| **Seniority** | Senior |
+| **Remote** | Remote-first (Europe/UK focus) |
+| **TL;DR** | Build enterprise-grade features (IAM, observability, governance) for a high-growth, open-source workflow automation platform. |
+
+---
+
+## Block B — Match with CV
+
+| JD Requirement | CV Alignment |
+| :--- | :--- |
+| **Fullstack TS/Node/Vue/React** | Strong: Payoneer (Java/Playwright/FE), AskDISHA (Node/React), Projects (Next.js/FastAPI) |
+| **Enterprise SaaS Mindset** | Strong: Payoneer (Payment systems, CI/CD, auditability) |
+| **Scalable Systems** | Strong: Patent/IEEE publications on DDoS/IDS; Payoneer infrastructure |
+| **Metrics/Instrumentation** | Moderate: Need to emphasize Allure/Gatling reporting experience |
+| **IAM/Security/Governance** | Strong: Patent on Intrusion Detection; RBAC in DSM Agent project |
+
+**Gaps & Mitigation:**
+1. **Vue.js experience:** You have strong React/Next.js experience. *Mitigation:* Highlight your ability to pick up new frameworks quickly; emphasize that the core logic (Node.js/TS) is the primary driver of the role.
+2. **"Senior" Title:** You are currently a SWE. *Mitigation:* Focus on your "Architected" and "Designed" contributions at Payoneer and your patent/publication record to demonstrate senior-level technical maturity.
+
+---
+
+## Block C — Level and Strategy
+
+1. **Level:** The role is "Senior." You are a high-performing early-career engineer.
+2. **"Sell Senior" Plan:** Frame your Payoneer work not just as "coding," but as "infrastructure architecture." Emphasize your patent and IEEE publication as evidence of independent research and technical leadership beyond standard ticket-taking.
+3. **"If they downlevel" Plan:** If offered a mid-level role, negotiate based on your specialized AI/Security background. Request a 6-month performance review with a clear path to Senior, tied to the delivery of specific enterprise features.
+
+---
+
+## Block D — Comp and Demand
+
+*   **Estimated Range:** €70k–€95k (Europe-based remote).
+*   **Demand:** High. Workflow orchestration and "AI-in-production" platforms are currently top-tier hiring priorities.
+*   **Company Reputation:** n8n is highly regarded in the dev community (190k+ stars). It is a "builder-first" company, which aligns well with your profile.
+
+---
+
+## Block E — Customization Plan
+
+| # | Section | Proposed Change | Why |
+| :--- | :--- | :--- | :--- |
+| 1 | Summary | Add "Enterprise-grade AI/Backend Engineer" | Align with n8n's focus on enterprise scale. |
+| 2 | Experience | Highlight "Auditability" and "Governance" | Directly mirrors the JD's "Enterprise foundations" requirements. |
+| 3 | Projects | Move "DSM Agent" to top | It demonstrates RBAC, audit logging, and Jira integration (perfect fit). |
+| 4 | Skills | Explicitly list "TypeScript" and "Node.js" | ATS keyword matching for the core stack. |
+| 5 | LinkedIn | Update Headline to include "Workflow Automation" | Improves search relevance for this specific domain. |
+
+---
+
+## Block F — Interview Plan
+
+| JD Requirement | STAR+R Story | S | T | A | R | Reflection |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Enterprise Security** | Patent/IDS System | IoMT security risks | Improve detection | Built Hybrid IDS | 99% accuracy | Learned that deterministic fallbacks are vital for AI. |
+| **Scalability** | Payoneer QA Platform | Manual testing bottlenecks | Build autonomous QA | Built MCP-integrated platform | Reduced cycle time | Learned that observability is as important as the code itself. |
+| **Product-Minded** | AskDISHA 2.0 | High user load on IRCTC | Deploy production chatbot | Built Node/React system | Live serving users | Learned that simplicity beats complexity in high-traffic systems. |
+
+*   **Recommended Case Study:** Present the **Autonomous AI QA Orchestration Platform**. It showcases the exact blend of infrastructure, AI, and enterprise-grade reliability they are looking for.
+*   **Red-Flag Question:** "How do you handle technical debt in a fast-moving startup?" *Answer:* Focus on "pragmatic refactoring"—balancing shipping features with long-term maintainability, using your experience with CI/CD and automated testing as the guardrails.
+
+---
+
+## Block G — Posting Legitimacy
+
+**Assessment:** High Confidence.
+*   **Signals:** The JD is highly specific, mentions internal team names (IAM, Enterprise Nodes), provides a clear mission, and includes a "try it out" challenge. This is a classic, high-quality engineering-led hiring process.
+*   **Context:** n8n is a legitimate, well-funded company. The multi-location posting is explained in the JD as a remote-hiring strategy.
+
+---
+
+## Keywords extracted
+TypeScript, Node.js, Vue.js, React, Enterprise SaaS, IAM, RBAC, Observability, Workflow Orchestration, CI/CD, SDLC, API Design, Governance, Auditability, Automation, Scalable Systems, Open Source, Prometheus, Grafana.
+
+---_SCORE_SUMMARY---
+COMPANY: n8n
+ROLE: Senior Product Engineer (TS/NodeJS/Vue)
+SCORE: 4.6
+ARCHETYPE: AI Platform / LLMOps
+LEGITIMACY: High Confidence
+---END_SUMMARY---
