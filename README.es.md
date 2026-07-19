@@ -1,6 +1,10 @@
-# Career-Ops
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/wordmark-dark.svg"><img src="docs/wordmark-light.svg" alt="career-ops" width="250" height="56"></picture></p>
 
-[English](README.md) | [Español](README.es.md) | [Français](README.fr.md) | [Português (Brasil)](README.pt-BR.md) | [한국어](README.ko-KR.md) | [日本語](README.ja.md) | [简体中文](README.cn.md) | [繁體中文](README.zh-TW.md) | [Українська](README.ua.md) | [Русский](README.ru.md) | [Polski](README.pl.md) | [العربية](README.ar.md)
+<div align="center">
+
+[English](README.md) | [Español](README.es.md) | [Deutsch](README.de.md) | [Français](README.fr.md) | [Português (Brasil)](README.pt-BR.md) | [한국어](README.ko-KR.md) | [日本語](README.ja.md) | [简体中文](README.cn.md) | [繁體中文](README.zh-TW.md) | [Українська](README.ua.md) | [Русский](README.ru.md) | [Polski](README.pl.md) | [Dansk](README.da.md) | [العربية](README.ar.md) | [हिन्दी](README.hi.md)
+
+</div>
 
 <p align="center">
   <a href="https://x.com/santifer"><img src="docs/hero-banner.jpg" alt="Career-Ops Sistema Multi-Agente de Busqueda de Empleo" width="800"></a>
@@ -197,9 +201,8 @@ El scanner viene con **45+ empresas** pre-configuradas y **19 queries** en los p
 El dashboard integrado en terminal te permite navegar tu pipeline visualmente:
 
 ```bash
-cd dashboard
-go build -o career-dashboard .
-./career-dashboard --path ..
+npm run serve:dashboard   # launch the TUI
+npm run build:dashboard   # optional: build the standalone binary
 ```
 
 Features: 6 pestañas de filtro, 4 modos de ordenacion, vista agrupada/plana, previews lazy-loaded, cambios de estado inline.
@@ -253,9 +256,13 @@ career-ops/
 
 ## Sobre el autor
 
-Soy Santiago -- Head of Applied AI, ex-fundador (monte y vendi un negocio que sigue funcionando con mi nombre). Construi career-ops para gestionar mi propia busqueda de empleo. Funciono: lo use para conseguir mi puesto actual.
+Soy [Santiago Fernández de Valderrama Aparicio](https://santifer.io/about) (santifer) -- Head of Applied AI, ex-fundador (monté y vendí un negocio que sigue funcionando con mi nombre). Construí career-ops para gestionar mi propia búsqueda de empleo. Funcionó: lo usé para conseguir mi puesto actual.
+
+¿Curiosidad por cómo se mantiene este repo en ~4 horas a la semana? Lee [Agentic maintenance: how career-ops is run by a fleet of AI agents](https://santifer.io/ai-agent-fleet).
 
 Mi portfolio y otros proyectos open source → [santifer.io](https://santifer.io)
+
+Wikidata: [Santiago Fernández de Valderrama Aparicio](https://www.wikidata.org/wiki/Q138710224) · [career-ops](https://www.wikidata.org/wiki/Q139007988).
 
 ## Documentacion
 

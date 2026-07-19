@@ -32,16 +32,16 @@ import { readFileSync, existsSync, writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { execFileSync } from 'child_process';
+import {
+  formatReportNumber, releaseReportNumbers, reserveReportNumbers,
+} from './reserve-report-num.mjs';
 
 // ---------------------------------------------------------------------------
 // Bootstrap: load .env before anything else
 // ---------------------------------------------------------------------------
 try {
   const { config } = await import('dotenv');
-  const envConfig = config();
-  if (envConfig.parsed && envConfig.parsed.GEMINI_API_KEY) {
-    process.env.GEMINI_API_KEY = envConfig.parsed.GEMINI_API_KEY;
-  }
+  config();
 } catch {
   // dotenv is optional — fall back to process.env if not installed
 }
@@ -156,16 +156,6 @@ function readFile(path, label) {
   return readFileSync(path, 'utf-8').trim();
 }
 
-function nextReportNumber() {
-  if (!existsSync(PATHS.reports)) return '001';
-  const files = readdirSync(PATHS.reports)
-    .filter(f => /^\d{3}-/.test(f))
-    .map(f => parseInt(f.slice(0, 3)))
-    .filter(n => !isNaN(n));
-  if (files.length === 0) return '001';
-  return String(Math.max(...files) + 1).padStart(3, '0');
-}
-
 function validateEvaluationShape(text) {
   const issues = [];
   const requiredBlocks = [
@@ -222,16 +212,6 @@ function normalizedTrackerScore(value) {
   const clean = tsvSafe(value);
   if (!clean || clean === '?') return 'N/A';
   return /\/5$/i.test(clean) ? clean : `${clean}/5`;
-}
-
-// Lazy import — only used when saving
-let readdirSync;
-try {
-  ({ readdirSync } = await import('fs'));
-} catch { /* already imported above via named exports */ }
-// Use named import fallback
-if (!readdirSync) {
-  readdirSync = (await import('fs')).readdirSync;
 }
 
 // ---------------------------------------------------------------------------
@@ -298,74 +278,33 @@ LEGITIMACY: <High Confidence | Proceed with Caution | Suspicious>
 `;
 
 // ---------------------------------------------------------------------------
-// Call Gemini API (with robust retry & model fallback)
+// Call Gemini API
 // ---------------------------------------------------------------------------
+console.log(`🤖  Calling Gemini (${modelName})... this may take 30-60 seconds.\n`);
+
 const genAI = new GoogleGenerativeAI(apiKey);
-const candidateModels = Array.from(new Set([
-  modelName,
-  'gemini-3.1-flash-lite',
-  'gemini-3-flash-preview',
-  'gemini-3.5-flash',
-  'gemini-flash-latest',
-  'gemini-2.5-flash'
-]));
+const model = genAI.getGenerativeModel({
+  model: modelName,
+  generationConfig: {
+    temperature: 0.4,      // deterministic enough for structured evaluation
+    maxOutputTokens: 8192, // full 7-block evaluation
+  },
+});
 
 let evaluationText;
-let lastError;
-let successfulModel = '';
-
-for (const currentModelName of candidateModels) {
-  console.log(`🤖  Trying Gemini model: ${currentModelName}...`);
-  const model = genAI.getGenerativeModel({
-    model: currentModelName,
-    generationConfig: {
-      temperature: 0.4,      // deterministic enough for structured evaluation
-      maxOutputTokens: 8192, // full 7-block evaluation
-    },
-  });
-
-  let attempt = 1;
-  const maxAttempts = 3;
-  let success = false;
-
-  while (attempt <= maxAttempts) {
-    try {
-      const result = await model.generateContent([
-        { text: systemPrompt },
-        { text: `\n\nJOB DESCRIPTION TO EVALUATE:\n\n${jdText}` },
-      ]);
-      evaluationText = result.response.text();
-      successfulModel = currentModelName;
-      success = true;
-      break;
-    } catch (err) {
-      lastError = err;
-      const sanitizedMsg = (err.message || '').split(apiKey).join('[REDACTED]');
-      console.warn(`⚠️  [${currentModelName}] Attempt ${attempt} failed: ${sanitizedMsg}`);
-      
-      if (sanitizedMsg.includes('503') || sanitizedMsg.includes('Service Unavailable') || sanitizedMsg.includes('high demand')) {
-        console.log('Sleeping 3 seconds before retry...');
-        await new Promise(r => setTimeout(r, 3000));
-        attempt++;
-      } else {
-        // For 429 quota or other errors, break and try next model
-        break;
-      }
-    }
-  }
-
-  if (success) {
-    modelName = successfulModel; // update modelName for saving/report metadata
-    console.log(`🎉  Evaluation succeeded using ${modelName}!`);
-    break;
-  }
-}
-
-if (!evaluationText) {
-  const sanitizedMsg = (lastError?.message || '').split(apiKey).join('[REDACTED]');
-  console.error('❌  All Gemini models failed. Last error:', sanitizedMsg);
+try {
+  const result = await model.generateContent([
+    { text: systemPrompt },
+    { text: `\n\nJOB DESCRIPTION TO EVALUATE:\n\n${jdText}` },
+  ]);
+  evaluationText = result.response.text();
+} catch (err) {
+  const sanitizedMsg = (err.message || '').split(apiKey).join('[REDACTED]');
+  console.error('❌  Gemini API error:', sanitizedMsg);
   if (sanitizedMsg.includes('API_KEY')) {
     console.error('    Check your GEMINI_API_KEY in .env');
+  } else if (sanitizedMsg.includes('quota') || sanitizedMsg.includes('rate')) {
+    console.error('    You may have hit the free-tier rate limit. Wait 60s and retry.');
   }
   process.exit(1);
 }
@@ -374,13 +313,6 @@ try {
   validateEvaluationShape(evaluationText);
 } catch (err) {
   console.error('❌  Gemini output failed validation:', err.message);
-  try {
-    const failedPath = join(ROOT, 'scratch', 'failed-output.txt');
-    writeFileSync(failedPath, evaluationText, 'utf-8');
-    console.error(`📂  Failed output saved for debugging at: ${failedPath}`);
-  } catch (writeErr) {
-    // Ignore
-  }
   console.error('    No report was saved. Retry, lower temperature, or use the Claude pipeline for this JD.');
   process.exit(1);
 }
@@ -431,12 +363,14 @@ if (summaryMatch) {
 // ---------------------------------------------------------------------------
 if (saveReport) {
   let reportSaved = false;
+  let reservedNumbers = [];
   try {
     if (!existsSync(PATHS.reports)) {
       mkdirSync(PATHS.reports, { recursive: true });
     }
 
-    const num         = nextReportNumber();
+    reservedNumbers   = await reserveReportNumbers(1, { rootDir: ROOT, reportsDir: PATHS.reports });
+    const num         = formatReportNumber(reservedNumbers[0]);
     const today       = new Date().toISOString().split('T')[0];
     const companySlug = slugifyCompany(company);
     const filename    = `${num}-${companySlug}-${today}.md`;
@@ -491,6 +425,14 @@ ${evaluationText.replace(/---SCORE_SUMMARY---[\s\S]*?---END_SUMMARY---/, '').tri
     } catch (err) {
       console.warn(`⚠️   Report saved, but could not merge tracker addition into data/applications.md: ${err.message}`);
       process.exitCode = 1;
+    }
+  }
+
+  if (reservedNumbers.length > 0) {
+    try {
+      await releaseReportNumbers(reservedNumbers, { reportsDir: PATHS.reports });
+    } catch (err) {
+      console.warn(`⚠️   Could not release report reservation: ${err.message}`);
     }
   }
 }
