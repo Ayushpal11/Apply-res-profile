@@ -105,7 +105,7 @@ if (args.length === 0 || args[0] === '--help' || args[0] === '-h') {
 
 // Parse flags
 let jdText = '';
-let modelName = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+let modelName = process.env.GEMINI_MODEL || 'gemini-3.5-flash';
 let saveReport = true;
 
 for (let i = 0; i < args.length; i++) {
@@ -283,23 +283,66 @@ LEGITIMACY: <High Confidence | Proceed with Caution | Suspicious>
 console.log(`🤖  Calling Gemini (${modelName})... this may take 30-60 seconds.\n`);
 
 const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({
-  model: modelName,
-  generationConfig: {
-    temperature: 0.4,      // deterministic enough for structured evaluation
-    maxOutputTokens: 8192, // full 7-block evaluation
-  },
-});
+const candidateModels = Array.from(new Set([
+  modelName,
+  'gemini-3.5-flash',
+  'gemini-3.1-flash-lite',
+  'gemini-3-flash-preview',
+  'gemini-flash-latest',
+  'gemini-1.5-flash',
+  'gemini-1.5-pro',
+  'gemini-2.5-flash'
+]));
 
 let evaluationText;
-try {
-  const result = await model.generateContent([
-    { text: systemPrompt },
-    { text: `\n\nJOB DESCRIPTION TO EVALUATE:\n\n${jdText}` },
-  ]);
-  evaluationText = result.response.text();
-} catch (err) {
-  const sanitizedMsg = (err.message || '').split(apiKey).join('[REDACTED]');
+let lastError;
+let successfulModel = '';
+
+for (const currentModelName of candidateModels) {
+  console.log(`🤖  Trying Gemini model: ${currentModelName}...`);
+  const model = genAI.getGenerativeModel({
+    model: currentModelName,
+    systemInstruction: systemPrompt,
+    generationConfig: {
+      temperature: 0.1,      // low temperature to prevent repetition loops
+      maxOutputTokens: 8192, // full 7-block evaluation
+    },
+  });
+
+  let attempt = 1;
+  const maxAttempts = 3;
+  let success = false;
+
+  while (attempt <= maxAttempts) {
+    try {
+      const result = await model.generateContent([
+        { text: `\n\nJOB DESCRIPTION TO EVALUATE:\n\n${jdText}` },
+      ]);
+      evaluationText = result.response.text();
+      successfulModel = currentModelName;
+      success = true;
+      break;
+    } catch (err) {
+      lastError = err;
+      const sanitizedMsg = (err.message || '').split(apiKey).join('[REDACTED]');
+      console.warn(`⚠️  [${currentModelName}] Attempt ${attempt} failed: ${sanitizedMsg}`);
+      if (sanitizedMsg.includes('quota') || sanitizedMsg.includes('rate')) {
+        console.log('    Wait 5s and retry...');
+        await new Promise(resolve => setTimeout(resolve, 5000));
+      }
+      attempt++;
+    }
+  }
+
+  if (success) {
+    console.log(`🎉  Evaluation succeeded using ${successfulModel}!`);
+    break;
+  }
+}
+
+if (!evaluationText) {
+  console.error('❌  All Gemini model attempts failed.');
+  const sanitizedMsg = (lastError.message || '').split(apiKey).join('[REDACTED]');
   console.error('❌  Gemini API error:', sanitizedMsg);
   if (sanitizedMsg.includes('API_KEY')) {
     console.error('    Check your GEMINI_API_KEY in .env');
@@ -308,6 +351,7 @@ try {
   }
   process.exit(1);
 }
+
 
 try {
   validateEvaluationShape(evaluationText);
