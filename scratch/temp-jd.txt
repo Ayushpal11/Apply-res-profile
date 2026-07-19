@@ -1,66 +1,153 @@
-# Senior Python Software Engineer/Open-Source Contributor - US Remote
+Skip to main content
 
-> Hugging Face · United States (Remote) · Full-time · Posted 2026-06-02
+We use cookies to offer you a better browsing experience, analyze site traffic, and personalize content. Read about how we use cookies and how you can control them by visiting our Cookie Settings page. If you continue to use this site, you consent to our use of cookies.
 
-**Workplace:** remote
+Decline
+Accept Cookies
+English
+Sign In
+ABB Career Page
+Software Engineer page is loaded
+Software Engineer
+Apply
+locations
+Bangalore, Karnataka, India
+time type
+Full time
+posted on
+Posted 4 Days Ago
+time left to apply
+End Date: August 7, 2026 (18 days left to apply)
+job requisition id
+JR00039753
 
-**Department:** Product
+At ABB, we help industries run leaner and cleaner—and every person here makes that happen. You’ll be empowered to lead, supported to grow, and proud of the impact we create together. Join us and help run what runs the world.
 
-## Description
+This Position reports to:
 
-At Hugging Face, we're on a journey to democratize good AI. We are building the fastest growing platform for AI builders with over 11 million users who collectively shared over 4 million models, 1 million datasets & 1.5 million Gradio apps. Our open-source libraries have more than 700,000 stars on Github.  
-  
-**About the Role**
+Principal Software Engineer
 
-Roles at Hugging Face are very fluid and dynamic -- we are looking for someone who is comfortable taking on different challenges that will evolve over time. In the short term, the focus of this role is to help develop Gradio ([www.gradio.dev](http://www.gradio.dev/)), a Python framework that lets users build machine learning web apps, and Trackio, a local-first, agent-friendly experiment tracking platform ([https://github.com/gradio-app/trackio](https://github.com/gradio-app/trackio)). Gradio and Trackio are used by more than 1 million developers each month, locally and to launch apps on [Hugging Face Spaces](https://huggingface.co/spaces). These apps have allowed machine learning to be accessible to a wide audience -- for the first time in history, anyone with an internet connection can use cutting-edge machine learning models right from their browser.
+ 
 
-  
-Key responsibilities include:
+What we believe in
+ABB’s Process Automation business area enables customers to operate some of the world’s largest and most complex industrial infrastructures, helping them outrun – leaner and cleaner.
+We offer a broad range of automation, electrification and digital solutions for process, hybrid and maritime industries, including industry-specific integrated control and software as well as measurement and analytics solutions and services.
 
--   Designing, developing, and maintaining core features for Gradio and Trackio, ensuring scalability, reliability, and ease of use for ML developers.
--   Architecting complex Python projects and frameworks that serve as foundational tools for the ML community.
--   Collaborating with open-source contributors and engaging with the broader community through code reviews, discussions, and support.
--   Integrating modern frontend technologies to create seamless and intuitive user experiences for Python-based web applications.
--   Adapting to evolving engineering challenges and contributing to the direction of our developer tools as the landscape changes.
+Your role and responsibilities
 
-## Requirements
+We’re looking for a strong UI Automation Engineer / Software Developer with hands-on experience in building scalable automation for modern cloud applications.
 
-### About You
+In this role, you’ll work on UI and API automation, improve quality feedback through CI/CD pipelines, and help drive a modern quality engineering approach using AI-assisted and agentic automation where it adds real value.
 
-If you love open-source, are passionate about making machine learning more accessible, have experience building Python frameworks, and want to contribute to one of the fastest-growing machine learning libraries, then we can't wait to see your application!
+The work model for the role is: Hybrid 
 
-### What you'll need
+You will be mainly accountable for:
 
--   Bachelor’s degree or equivalent in Computer Science or a related field
--   5+ years of professional Python development experience
--   Experience architecting complex Python projects or frameworks
--   Professional experience with JavaScript or TypeScript
--   Professional experience with a modern frontend framework such as React or Svelte
--   Experience contributing to or maintaining open-source software projects
+Design, build, and maintain UI automation for critical product and user workflows
 
-If you're interested in joining us, but don't tick every box above, we still encourage you to apply! We're building a diverse team whose skills, experiences, and backgrounds complement one another. We're happy to consider where you might be able to make the biggest impact.
+Develop and enhance UI/API automation frameworks
 
-### One more thing
+Drive end-to-end validation across product features and integrations
 
-At Hugging Face we believe great AI shouldn't require a massive cluster, we build for everyone, especially the GPU-poor. And because we read every application, here's a small sign that you read this one too: start your answer to the first application question with the words “**GPU-poor and proud** 🤗”. No trick, no catch, it just tells us a real person is on the other side.
+Improve automation stability, maintainability, and execution reliability
 
-### More about Hugging Face
+Troubleshoot automation failures, pipeline issues, and flaky tests
 
-**We are actively working to build a culture that values diversity, equity, and inclusivity**. We are intentionally building a workplace where people feel respected and supported—regardless of who you are or where you come from. We believe this is foundational to building a great company and community. Hugging Face is an equal opportunity employer and we do not discriminate on the basis of race, religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or disability status.
+Contribute to performance-focused validation and test data / simulation readiness
 
-**We value development.** You will work with some of the smartest people in our industry. We are an organization that has a bias for impact and is always challenging ourselves to continuously grow. We provide all employees with reimbursement for relevant conferences, training, and education.
+Use AI-assisted and agent-based automation techniques to accelerate development, debugging, and test effectiveness
 
-**We care about your well-being.** We offer flexible working hours and remote options. We offer health, dental, and vision benefits for employees and their dependents. We also offer parental leave and flexible paid time off.
+Collaborate with SMEs, developers, and cross-functional teams to automate the right business-critical flows
 
-**We support our employees wherever they are**. While we have office spaces in NYC and Paris, we're very distributed and all remote employees have the opportunity to visit our offices. If needed, we'll also outfit your workstation to ensure you succeed.
+Qualifications for the role:
 
-**We want our teammates to be shareholders**. All employees have company equity as part of their compensation package. If we succeed in becoming a category-defining platform in machine learning and artificial intelligence, everyone enjoys the upside.
+3–6 years of experience in software development / test automation
 
-**We support the community**. We believe major scientific advancements are the result of collaboration across the field. Join a community supporting the ML/AI community.
+Strong coding experience in C#, JavaScript, or TypeScript
 
-## Apply
+Hands-on experience with Selenium, Playwright, Protractor, or similar UI automation tools
 
-[Apply at Hugging Face](https://apply.workable.com/huggingface/j/F8427A442D/apply)
+Good experience in UI and API test development
 
----
-Powered by [Workable](https://www.workable.com)
+Exposure to REST / SOAP web services testing
+
+Good understanding of automation framework design, code quality, and CI/CD integration
+
+Solid understanding of web protocols, application architecture, and debugging
+
+Strong analytical, communication, and problem-solving skills
+
+Experience with agentic automation or AI-assisted coding tools
+
+Exposure to Microsoft Azure
+
+Azure certifications
+
+Experience working with distributed / global teams
+
+More about us
+
+ABB is a leading global technology company that energizes the transformation of society and industry to achieve a more productive, sustainable future. The Process Automation (PA) business area (>$6B revenue in 2021, 22,000 employees), automates, electrifies and digitalizes some of the most complex industrial infrastructures on this planet. Through its five divisions, it serves customers in the energy, process and hybrid industries – from hydrocarbons, chemicals, water, mining, minerals, pulp & paper to marine and ports, and many more. PA stands at the heart of some of the most important shifts in society, helping the energy-intense industries to safer, smarter and more sustainable operations to enable a prosperous, low-carbon society.
+
+
+Building a cleaner, smarter future takes all kinds of minds: the curious, the courageous, and the creative. We welcome people from all backgrounds and experiences. 
+
+Ready to make an impact? Apply today or visit www.abb.com to learn more about the impact of our solutions across the globe.
+
+Recruitment Fraud Warning
+
+ABB never asks for payment from job applicants. All genuine job offers follow a formal application and interview process.
+
+View current job openings and apply at: https://careers.abb/global/en/home
+
+For more information, read our full fraud warning notice at: https://global.abb/group/en/careers/how-to-apply/fraud-warning
+
+Similar Jobs (5)
+Senior Software Engineer
+locations
+Bangalore, Karnataka, India
+time type
+Full time
+posted on
+Posted 6 Days Ago
+time left to apply
+End Date: August 10, 2026 (21 days left to apply)
+Senior Software Engineer
+locations
+Bangalore, Karnataka, India
+time type
+Full time
+posted on
+Posted 6 Days Ago
+time left to apply
+End Date: August 10, 2026 (21 days left to apply)
+Principal Software Engineer
+locations
+Bangalore, Karnataka, India
+time type
+Full time
+posted on
+Posted 17 Days Ago
+time left to apply
+End Date: July 30, 2026 (10 days left to apply)
+View All 5 Jobs
+About Us
+
+Why ABB 
+Working at ABB gives you the opportunity to contribute to a healthier and more prosperous world. Add to your story by joining a passionate team, focused on pushing the boundaries of technology to drive performance, shape new business models and find new ways of working that benefit our customers, partners and society. We want you to be proud of being part of ABB.
+
+We care
+At ABB, we care about our people and their stories. We create safe, fair, equitable and inclusive working environments in which our people can succeed and develop, regardless of gender, ethnicity, sexual orientation or cultural, religious or social background. Diverse teams make us stronger.
+ABB is also committed to a high standard of integrity in everything we do.
+
+We grow
+We help our people succeed and develop, and we empower them to create their own careers at ABB.
+Our benefits, reward and development programs encompass a wide array of offerings.
+
+How to apply
+Do you want to shape the future, together with us? Get more insights into our recruitment process and find some helpful tips and tricks how to join the team. Make our story your story.
+
+Read More
+Follow Us
+Privacy Notice
+© 2026 Workday, Inc. All rights reserved.
