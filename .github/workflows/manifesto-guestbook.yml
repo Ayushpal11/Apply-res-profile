@@ -23,6 +23,13 @@ jobs:
           script: |
             const before = context.payload.before, after = context.payload.after;
             if (!before || /^0+$/.test(before)) { core.info('primer push — skip'); return; }
+
+            const webhook = process.env.WEBHOOK?.trim();
+            if (!webhook || !/^https?:\/\//.test(webhook)) {
+              core.info('missing/invalid DISCORD_MANIFESTO_WEBHOOK — skip');
+              return;
+            }
+
             // Diff de la oleada vía compare API (sin checkout)
             const { data: cmp } = await github.rest.repos.compareCommits({ ...context.repo, base: before, head: after });
             const f = (cmp.files || []).find(x => x.filename === 'SIGNATURES.md');
@@ -79,7 +86,7 @@ jobs:
             // (ruta oficial de docs, verificada 200 image/png sin query-hash)
             if (firstLogin)
               embed.image = { url: `https://career-ops.org/manifesto/s/${firstLogin}/opengraph-image` };
-            const r = await fetch(process.env.WEBHOOK, {
+            const r = await fetch(webhook, {
               method: 'POST', headers: { 'content-type': 'application/json' },
               body: JSON.stringify({
                 username: 'career-ops bot',
