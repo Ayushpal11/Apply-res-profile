@@ -1,0 +1,117 @@
+{
+  "lang": "en",
+  "page_format": "a4",
+  "candidate": {
+    "name": "Ayush Pal",
+    "phone": "+91 9548165996",
+    "email": "ayushpal74553@gmail.com",
+    "linkedin": {
+      "url": "https://linkedin.com/in/ayushpal11",
+      "display": "linkedin.com/in/ayushpal11"
+    },
+    "portfolio": {
+      "url": "https://github.com/Ayushpal11",
+      "display": "github.com/Ayushpal11"
+    },
+    "location": "Gurugram, Haryana, India"
+  },
+  "summary": "AI & Backend Engineer specializing in LLM evaluations, RAG pipelines, and model benchmarking. Experienced in vector databases, semantic search optimization, and building robust testing infrastructure for conversational AI systems.",
+  "competencies": [
+    "LLM Evaluations & Benchmarking",
+    "RAG Pipelines & Vector DBs",
+    "Hugging Face & LangChain",
+    "ChromaDB & Sentence Transformers",
+    "Python & FastAPI Backend",
+    "Conversational AI Systems"
+  ],
+  "experience": [
+    {
+      "company": "Payoneer",
+      "role": "Software Engineer – Backend Infrastructure & Automation",
+      "location": "Gurugram, Haryana",
+      "dates": "May 2025 - Present",
+      "bullets": [
+        "Architected an AI-driven QA platform supporting autonomous test planning, benchmark evaluations, and MCP-integrated LLM retrieval.",
+        "Built and scaled test automation infrastructure using Java, Playwright, and Maven; engineered Allure + Gatling reporting pipelines.",
+        "Designed API validation and transaction integrity pipelines for distributed systems."
+      ]
+    },
+    {
+      "company": "Centre for Railway Information Systems (CRIS)",
+      "role": "Software Development Intern",
+      "location": "New Delhi, India",
+      "dates": "Aug 2023 - Sep 2023",
+      "bullets": [
+        "Co-developed and deployed AskDISHA 2.0, a production-grade conversational AI chatbot for IRCTC serving millions of active users."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "DSM Agent — Enterprise AI Scrum Automation",
+      "badge": "AI & Automation",
+      "tech": "Next.js, Mistral AI, Prisma, NeonDB, Docker",
+      "description": "Engineered automated standup generation pipelines with live Jira API ingestion and secure multi-role RBAC on Neon PostgreSQL."
+    },
+    {
+      "name": "Enterprise RAG Platform",
+      "badge": "AI Infrastructure",
+      "tech": "Python, FastAPI, LangChain, ChromaDB, Docker",
+      "description": "Built vector-search infrastructure using ChromaDB and Sentence Transformers for semantic retrieval with grounded source attribution."
+    },
+    {
+      "name": "Ask PDF — Document AI Query System",
+      "badge": "REST APIs",
+      "tech": "FastAPI, LangChain, Hugging Face, ChromaDB, React",
+      "description": "Engineered hybrid retrieval pipeline combining BoW citation matching with vector embeddings for document query resolution."
+    }
+  ],
+  "education": [
+    {
+      "title": "Credit-Linked Program in Artificial Intelligence & Machine Learning",
+      "org": "Daksh Gurukul – IIT Guwahati (Remote)",
+      "year": "2025 - 2026",
+      "description": "GPA: 9.46"
+    },
+    {
+      "title": "B.Tech in Computer Science & Engineering",
+      "org": "Vellore Institute of Technology",
+      "year": "2021 - 2025",
+      "description": "CGPA: 8.18"
+    }
+  ],
+  "certifications": [],
+  "skills": [
+    {
+      "category": "Languages",
+      "items": [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "Java",
+        "SQL"
+      ]
+    },
+    {
+      "category": "AI & Vector Search",
+      "items": [
+        "LLMs",
+        "RAG",
+        "LangChain",
+        "ChromaDB",
+        "Transformers",
+        "Evals"
+      ]
+    },
+    {
+      "category": "Backend & Cloud",
+      "items": [
+        "FastAPI",
+        "Node.js",
+        "PostgreSQL",
+        "Docker",
+        "GitHub Actions"
+      ]
+    }
+  ]
+}
