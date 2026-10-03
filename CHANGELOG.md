@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.11.0](https://github.com/Ayushpal11/Apply-res-profile/compare/career-ops-v1.10.0...career-ops-v1.11.0) (2026-10-03)
+
+
+### Features
+
+* add career operations setup with custom CV generators, data tracking, and Claude settings ([3746a30](https://github.com/Ayushpal11/Apply-res-profile/commit/3746a30b8ac9414c09bb64549a816046c76751e8))
+
+
+### Bug Fixes
+
+* **deps:** compatibility updates for js-yaml 5.x ESM imports ([c388ba8](https://github.com/Ayushpal11/Apply-res-profile/commit/c388ba83bc814956a02af548ecc6a6bde9f0833f))
+
 ## [1.21.0](https://github.com/santifer/career-ops/compare/career-ops-v1.20.0...career-ops-v1.21.0) (2026-07-17)
 
 
